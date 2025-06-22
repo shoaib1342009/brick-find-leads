@@ -1,12 +1,25 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React from 'react';
+import Header from '@/components/Header';
+import SearchSection from '@/components/SearchSection';
+import FeaturedProjects from '@/components/FeaturedProjects';
+import TrustSection from '@/components/TrustSection';
+import ContactForm from '@/components/ContactForm';
+import Footer from '@/components/Footer';
+import StickyMobileCTA from '@/components/StickyMobileCTA';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Header />
+      <SearchSection />
+      <FeaturedProjects />
+      <TrustSection />
+      <ContactForm />
+      <Footer />
+      <StickyMobileCTA />
+      {/* Add padding bottom for mobile to account for sticky CTA */}
+      <div className="h-20 md:h-0"></div>
     </div>
   );
 };
