@@ -1,48 +1,23 @@
 
 import React from 'react';
-import { MapPin, Home, IndianRupee, Clock, CheckCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { MapPin, Clock } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { getFeaturedProjects } from '@/utils/projectData';
 
 const FeaturedProjects = () => {
-  const projects = [
-    {
-      id: 1,
-      name: "Sunshine Residency",
-      location: "Andheri West, Mumbai",
-      price: "₹1.2Cr - ₹2.8Cr",
-      image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=600&h=400&fit=crop",
-      bhk: "2-3 BHK",
-      possession: "Dec 2025",
-      rera: "VERIFIED",
-      badges: ["RERA", "Near Metro", "Ready Soon"],
-      sqft: "850-1200 sq.ft"
-    },
-    {
-      id: 2,
-      name: "Green Valley Heights",
-      location: "Whitefield, Bangalore",
-      price: "₹85L - ₹1.5Cr",
-      image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=600&h=400&fit=crop",
-      bhk: "2-3 BHK",
-      possession: "Ready to Move",
-      rera: "VERIFIED",
-      badges: ["RERA", "IT Hub", "Ready"],
-      sqft: "950-1350 sq.ft"
-    },
-    {
-      id: 3,
-      name: "Royal Gardens",
-      location: "Gurgaon Sector 65",
-      price: "₹1.8Cr - ₹3.2Cr",
-      image: "https://images.unsplash.com/photo-1496307653780-42ee777d4833?w=600&h=400&fit=crop",
-      bhk: "3-4 BHK",
-      possession: "Mar 2026",
-      rera: "VERIFIED",
-      badges: ["RERA", "Golf Course", "Luxury"],
-      sqft: "1200-1800 sq.ft"
-    }
-  ];
+  const navigate = useNavigate();
+  const projects = getFeaturedProjects();
+
+  const handleViewDetails = (projectId: string) => {
+    navigate(`/project/${projectId}`);
+  };
+
+  const handleGetQuote = (project: any) => {
+    const message = encodeURIComponent(`Hi! I'm interested in ${project.name} at ${project.location}. Please share more details.`);
+    window.open(`https://wa.me/919876543210?text=${message}`, '_blank');
+  };
 
   return (
     <section className="py-16 bg-gray-50">
@@ -114,10 +89,17 @@ const FeaturedProjects = () => {
                 </div>
 
                 <div className="flex gap-2">
-                  <Button variant="outline" className="flex-1">
+                  <Button 
+                    variant="outline" 
+                    className="flex-1"
+                    onClick={() => handleViewDetails(project.id)}
+                  >
                     View Details
                   </Button>
-                  <Button className="flex-1 cta-button">
+                  <Button 
+                    className="flex-1 cta-button"
+                    onClick={() => handleGetQuote(project)}
+                  >
                     Get Quote
                   </Button>
                 </div>
