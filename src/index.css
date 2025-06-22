@@ -16,7 +16,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 220 100% 20%; /* Navy blue for authority */
+    --primary: 352 84% 55%; /* Updated to match #db3344 */
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -25,7 +25,7 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 43 96% 56%; /* Gold accent for CTAs */
+    --accent: 52 96% 56%; /* Updated to match #fad324 */
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -52,11 +52,11 @@
 
 @layer components {
   .premium-gradient {
-    @apply bg-gradient-to-r from-primary via-blue-700 to-primary;
+    @apply bg-gradient-to-r from-[#db3344] via-[#e44a5b] to-[#db3344];
   }
   
   .gold-gradient {
-    @apply bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600;
+    @apply bg-gradient-to-r from-[#fad324] via-[#fdd835] to-[#fad324];
   }
   
   .property-card {
@@ -68,6 +68,6 @@
   }
   
   .cta-button {
-    @apply bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-6 py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg;
+    @apply bg-gradient-to-r from-[#fad324] via-[#fdd835] to-[#fad324] hover:from-[#f9c91b] hover:via-[#fbc02d] hover:to-[#f9c91b] text-black font-semibold px-6 py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg;
   }
 }
