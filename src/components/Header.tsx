@@ -9,10 +9,12 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 premium-gradient rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">BM</span>
-            </div>
+          <div className="flex items-center space-x-3">
+            <img 
+              src="/lovable-uploads/b3b0b81b-aa6c-452e-ac09-0863ad54770c.png" 
+              alt="Book My Brick Logo" 
+              className="h-10 w-auto"
+            />
             <div>
               <h1 className="text-xl font-bold text-primary">Book My Brick</h1>
               <p className="text-xs text-gray-500">Verified Properties</p>
