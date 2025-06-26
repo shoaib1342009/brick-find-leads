@@ -47,6 +47,13 @@
   body {
     @apply bg-background text-foreground font-sans;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    padding-bottom: 80px; /* Add space for mobile sticky CTA */
+  }
+
+  @media (min-width: 768px) {
+    body {
+      padding-bottom: 0; /* Remove padding on desktop */
+    }
   }
 }
 

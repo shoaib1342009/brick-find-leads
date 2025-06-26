@@ -96,26 +96,6 @@ const ProjectDetail = () => {
         </div>
       </div>
 
-      {/* Sticky CTA Bar */}
-      <div className="sticky top-16 bg-white border-b shadow-sm z-40 py-3">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-center gap-3">
-            <Button onClick={handleCall} className="bg-blue-500 hover:bg-blue-600">
-              <Phone className="w-4 h-4 mr-2" />
-              Call Now
-            </Button>
-            <Button onClick={handleWhatsApp} className="bg-green-500 hover:bg-green-600">
-              <MessageCircle className="w-4 h-4 mr-2" />
-              WhatsApp
-            </Button>
-            <Button onClick={() => setShowQuoteForm(true)} className="cta-button">
-              <FileText className="w-4 h-4 mr-2" />
-              Get Quote
-            </Button>
-          </div>
-        </div>
-      </div>
-
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
@@ -247,26 +227,6 @@ const ProjectDetail = () => {
           <div className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Quick Contact</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <Button onClick={handleCall} className="w-full bg-blue-500 hover:bg-blue-600">
-                  <Phone className="w-4 h-4 mr-2" />
-                  Call Now
-                </Button>
-                <Button onClick={handleWhatsApp} className="w-full bg-green-500 hover:bg-green-600">
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  WhatsApp
-                </Button>
-                <Button onClick={() => setShowQuoteForm(true)} className="w-full cta-button">
-                  <FileText className="w-4 h-4 mr-2" />
-                  Get Quote
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
                 <CardTitle>Project Highlights</CardTitle>
               </CardHeader>
               <CardContent>
@@ -287,6 +247,53 @@ const ProjectDetail = () => {
               </CardContent>
             </Card>
           </div>
+        </div>
+      </div>
+
+      {/* Fixed Bottom Sticky CTA - Mobile */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-50 md:hidden">
+        <div className="grid grid-cols-3 gap-2 p-3">
+          <Button 
+            onClick={handleWhatsApp}
+            className="flex flex-col items-center py-3 bg-green-500 hover:bg-green-600 text-white"
+          >
+            <MessageCircle className="w-5 h-5 mb-1" />
+            <span className="text-xs">WhatsApp</span>
+          </Button>
+          
+          <Button 
+            onClick={handleCall}
+            className="flex flex-col items-center py-3 bg-blue-500 hover:bg-blue-600 text-white"
+          >
+            <Phone className="w-5 h-5 mb-1" />
+            <span className="text-xs">Call Now</span>
+          </Button>
+          
+          <Button 
+            onClick={() => setShowQuoteForm(true)}
+            className="flex flex-col items-center py-3 cta-button text-black"
+          >
+            <FileText className="w-5 h-5 mb-1" />
+            <span className="text-xs">Get Quote</span>
+          </Button>
+        </div>
+      </div>
+
+      {/* Desktop Floating CTA */}
+      <div className="hidden md:block fixed bottom-6 right-6 z-50">
+        <div className="flex gap-3">
+          <Button onClick={handleCall} className="bg-blue-500 hover:bg-blue-600">
+            <Phone className="w-4 h-4 mr-2" />
+            Call Now
+          </Button>
+          <Button onClick={handleWhatsApp} className="bg-green-500 hover:bg-green-600">
+            <MessageCircle className="w-4 h-4 mr-2" />
+            WhatsApp
+          </Button>
+          <Button onClick={() => setShowQuoteForm(true)} className="cta-button text-black">
+            <FileText className="w-4 h-4 mr-2" />
+            Get Quote
+          </Button>
         </div>
       </div>
 

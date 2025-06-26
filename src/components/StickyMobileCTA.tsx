@@ -42,7 +42,7 @@ const StickyMobileCTA = () => {
         
         <Button 
           onClick={handleGetDetails}
-          className="flex flex-col items-center py-3 cta-button"
+          className="flex flex-col items-center py-3 cta-button text-black"
         >
           <FileText className="w-5 h-5 mb-1" />
           <span className="text-xs">Get Details</span>
