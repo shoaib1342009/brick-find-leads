@@ -50,35 +50,31 @@ const SearchSection = () => {
               alt={`Slide ${index + 1}`}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-black/20" />
+            <div className="absolute inset-0 bg-black/10" />
           </div>
         ))}
       </div>
 
-      {/* Search Form Overlay - Positioned to be half on image, half outside */}
-      <div className="absolute bottom-0 left-0 right-0 transform translate-y-1/2 z-10">
+      {/* Search Form Overlay - Single row inside image boundary */}
+      <div className="absolute bottom-8 left-0 right-0 z-10">
         <div className="container mx-auto px-4">
-          <div className="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+          <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg p-4 w-full max-w-5xl mx-auto">
+            <div className="flex flex-col md:flex-row gap-3 items-stretch">
               {/* Location */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700">Location</label>
-                <div className="relative">
-                  <MapPin className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
-                  <Input
-                    placeholder="Search by city, area..."
-                    className="pl-10"
-                    value={searchData.location}
-                    onChange={(e) => setSearchData({...searchData, location: e.target.value})}
-                  />
-                </div>
+              <div className="flex-1 relative">
+                <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <Input
+                  placeholder="Search by city, area..."
+                  className="pl-10 h-12"
+                  value={searchData.location}
+                  onChange={(e) => setSearchData({...searchData, location: e.target.value})}
+                />
               </div>
 
               {/* Budget */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700">Budget</label>
+              <div className="flex-1">
                 <Select value={searchData.budget} onValueChange={(value) => setSearchData({...searchData, budget: value})}>
-                  <SelectTrigger>
+                  <SelectTrigger className="h-12">
                     <div className="flex items-center">
                       <IndianRupee className="w-4 h-4 mr-2 text-gray-400" />
                       <SelectValue placeholder="Select budget" />
@@ -95,10 +91,9 @@ const SearchSection = () => {
               </div>
 
               {/* BHK */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700">BHK</label>
+              <div className="flex-1">
                 <Select value={searchData.bhk} onValueChange={(value) => setSearchData({...searchData, bhk: value})}>
-                  <SelectTrigger>
+                  <SelectTrigger className="h-12">
                     <div className="flex items-center">
                       <Home className="w-4 h-4 mr-2 text-gray-400" />
                       <SelectValue placeholder="Select BHK" />
@@ -115,10 +110,9 @@ const SearchSection = () => {
               </div>
 
               {/* Property Type */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700">Type</label>
+              <div className="flex-1">
                 <Select value={searchData.propertyType} onValueChange={(value) => setSearchData({...searchData, propertyType: value})}>
-                  <SelectTrigger>
+                  <SelectTrigger className="h-12">
                     <SelectValue placeholder="Property type" />
                   </SelectTrigger>
                   <SelectContent>
@@ -129,15 +123,15 @@ const SearchSection = () => {
                   </SelectContent>
                 </Select>
               </div>
-            </div>
 
-            <Button 
-              onClick={handleSearch}
-              className="w-full bg-white hover:bg-gray-50 border border-gray-300 py-4 text-lg text-black font-medium"
-            >
-              <Search className="w-5 h-5 mr-2" />
-              Search Properties
-            </Button>
+              {/* Search Button */}
+              <Button 
+                onClick={handleSearch}
+                className="bg-white hover:bg-gray-50 border border-gray-300 px-6 h-12 text-black font-medium"
+              >
+                <Search className="w-5 h-5" />
+              </Button>
+            </div>
           </div>
         </div>
       </div>

@@ -1,55 +1,62 @@
 
 import React from 'react';
-import { CheckCircle, Shield, Users, Award } from 'lucide-react';
+import { Shield, Award, Users, CheckCircle, Star, Building, Clock, Heart } from 'lucide-react';
 
 const TrustSection = () => {
-  const trustPoints = [
+  const trustFeatures = [
     {
       icon: Shield,
-      title: "RERA Verified",
-      description: "All projects are RERA registered and verified"
-    },
-    {
-      icon: Users,
-      title: "500+ Happy Families",
-      description: "Successfully helped families find their dream homes"
-    },
-    {
-      icon: CheckCircle,
-      title: "Trusted Partner",
-      description: "Authorized channel partner with top builders"
+      title: 'RERA Verified',
+      description: '100% RERA registered properties'
     },
     {
       icon: Award,
-      title: "Expert Guidance",
-      description: "Professional real estate consultation"
+      title: 'Premium Builders',
+      description: 'Only trusted and reputed developers'
+    },
+    {
+      icon: Users,
+      title: 'Expert Guidance',
+      description: 'Dedicated property consultants'
+    },
+    {
+      icon: CheckCircle,
+      title: 'Legal Clarity',
+      description: 'Complete documentation support'
+    },
+    {
+      icon: Star,
+      title: '5-Star Service',
+      description: 'Rated excellent by 10,000+ customers'
+    },
+    {
+      icon: Building,
+      title: 'Premium Locations',
+      description: 'Handpicked prime properties'
+    },
+    {
+      icon: Clock,
+      title: '24/7 Support',
+      description: 'Round-the-clock customer service'
+    },
+    {
+      icon: Heart,
+      title: 'Home Loans',
+      description: 'Easy financing at best rates'
     }
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-gray-50 search-section-spacing">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Why Choose Book My Brick?
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Your trusted partner in finding the perfect home with complete transparency and expert guidance
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {trustPoints.map((point, index) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
+          {trustFeatures.map((feature, index) => (
             <div key={index} className="text-center group">
-              <div className="w-16 h-16 mx-auto mb-4 premium-gradient rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <point.icon className="w-8 h-8 text-white" />
+              <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3 shadow-sm group-hover:shadow-md transition-shadow">
+                <feature.icon className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                {point.title}
-              </h3>
-              <p className="text-gray-600">
-                {point.description}
-              </p>
+              <h3 className="font-semibold text-sm mb-1">{feature.title}</h3>
+              <p className="text-xs text-gray-600">{feature.description}</p>
             </div>
           ))}
         </div>
