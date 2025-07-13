@@ -8,11 +8,13 @@ import CustomerReviews from '@/components/CustomerReviews';
 import BlogSection from '@/components/BlogSection';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
+import MorphingHomeBar from '@/components/MorphingHomeBar';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
+      <MorphingHomeBar />
       <SearchSection />
       <TrustSection />
       <FeaturedProjects />

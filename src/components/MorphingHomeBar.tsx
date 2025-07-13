@@ -1,13 +1,31 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { User } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const Header = () => {
+const MorphingHomeBar = () => {
+  const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const handleScroll = () => {
+      // Get the search section height (approximately 50vh + some padding)
+      const searchSectionHeight = window.innerHeight * 0.5 + 100;
+      const scrollPosition = window.scrollY;
+      
+      setIsVisible(scrollPosition > searchSectionHeight);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className="bg-white shadow-sm border-b sticky top-0 z-50">
+    <div 
+      className={`fixed top-0 left-0 right-0 z-40 bg-white shadow-md border-b transition-transform duration-300 ease-in-out ${
+        isVisible ? 'translate-y-0' : '-translate-y-full'
+      }`}
+    >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo with House Icon */}
@@ -29,8 +47,8 @@ const Header = () => {
           </div>
         </div>
       </div>
-    </header>
+    </div>
   );
 };
 
-export default Header;
+export default MorphingHomeBar;
