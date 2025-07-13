@@ -16,8 +16,9 @@ const SearchSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   
   const sliderImages = [
-    '/lovable-uploads/8815a550-b450-4edd-858a-cba6ac935ca0.png',
-    '/lovable-uploads/f3716a8b-0405-4da1-86aa-8b0c50006d4a.png'
+    'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=600&fit=crop',
+    'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&h=600&fit=crop',
+    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=600&fit=crop'
   ];
 
   useEffect(() => {
@@ -136,22 +137,6 @@ const SearchSection = () => {
             <Search className="w-5 h-5 mr-2" />
             Search Properties
           </Button>
-        </div>
-      </div>
-
-      {/* Quick Categories */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl">
-          {[
-            'Near Metro',
-            'Ready to Move',
-            'Budget Homes',
-            'Luxury Projects'
-          ].map((category) => (
-            <button key={category} className="bg-white/10 backdrop-blur-sm text-white rounded-lg p-3 hover:bg-white/20 transition-all text-sm">
-              <span className="font-medium">{category}</span>
-            </button>
-          ))}
         </div>
       </div>
     </section>
