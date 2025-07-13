@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MapPin, Clock } from 'lucide-react';
+import { MapPin, Clock, Phone } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { getFeaturedProjects } from '@/utils/projectData';
@@ -14,9 +14,8 @@ const FeaturedProjects = () => {
     navigate(`/project/${projectId}`);
   };
 
-  const handleGetQuote = (project: any) => {
-    const message = encodeURIComponent(`Hi! I'm interested in ${project.name} at ${project.location}. Please share more details.`);
-    window.open(`https://wa.me/919876543210?text=${message}`, '_blank');
+  const handleCallSeller = (project: any) => {
+    window.location.href = 'tel:+919876543210';
   };
 
   return (
@@ -97,10 +96,11 @@ const FeaturedProjects = () => {
                     View Details
                   </Button>
                   <Button 
-                    className="flex-1 cta-button"
-                    onClick={() => handleGetQuote(project)}
+                    className="flex-1 bg-green-500 hover:bg-green-600 text-white"
+                    onClick={() => handleCallSeller(project)}
                   >
-                    Get Quote
+                    <Phone className="w-4 h-4 mr-1" />
+                    Call Seller
                   </Button>
                 </div>
               </div>

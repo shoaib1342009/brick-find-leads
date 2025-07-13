@@ -2,8 +2,10 @@
 import React from 'react';
 import Header from '@/components/Header';
 import SearchSection from '@/components/SearchSection';
-import FeaturedProjects from '@/components/FeaturedProjects';
 import TrustSection from '@/components/TrustSection';
+import FeaturedProjects from '@/components/FeaturedProjects';
+import CustomerReviews from '@/components/CustomerReviews';
+import BlogSection from '@/components/BlogSection';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 
@@ -12,8 +14,10 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <SearchSection />
-      <FeaturedProjects />
       <TrustSection />
+      <FeaturedProjects />
+      <CustomerReviews />
+      <BlogSection />
       <ContactForm />
       <Footer />
     </div>

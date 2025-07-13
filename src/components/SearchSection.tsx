@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, MapPin, Home, IndianRupee } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,25 +13,50 @@ const SearchSection = () => {
     propertyType: ''
   });
 
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  const sliderImages = [
+    '/lovable-uploads/8815a550-b450-4edd-858a-cba6ac935ca0.png',
+    '/lovable-uploads/f3716a8b-0405-4da1-86aa-8b0c50006d4a.png'
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [sliderImages.length]);
+
   const handleSearch = () => {
     console.log('Search initiated with:', searchData);
     // Navigate to listings page with filters
   };
 
   return (
-    <section className="premium-gradient py-16">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-8">
-          <h2 className="text-4xl font-bold text-white mb-4">
-            Find Your Dream Home
-          </h2>
-          <p className="text-xl text-blue-100">
-            Discover RERA verified properties from trusted builders
-          </p>
-        </div>
+    <section className="relative h-[60vh] overflow-hidden">
+      {/* Image Slider Background */}
+      <div className="absolute inset-0">
+        {sliderImages.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <img
+              src={image}
+              alt={`Slide ${index + 1}`}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/30" />
+          </div>
+        ))}
+      </div>
 
-        {/* Search Form */}
-        <div className="bg-white rounded-2xl shadow-2xl p-6 max-w-6xl mx-auto">
+      {/* Search Form Overlay */}
+      <div className="relative z-10 container mx-auto px-4 h-full flex items-end pb-8">
+        <div className="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
             {/* Location */}
             <div className="space-y-2">
@@ -106,22 +131,24 @@ const SearchSection = () => {
 
           <Button 
             onClick={handleSearch}
-            className="w-full cta-button py-4 text-lg"
+            className="w-full bg-white hover:bg-gray-50 border border-gray-300 py-4 text-lg text-black font-medium"
           >
             <Search className="w-5 h-5 mr-2" />
             Search Properties
           </Button>
         </div>
+      </div>
 
-        {/* Quick Categories */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 max-w-4xl mx-auto">
+      {/* Quick Categories */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl">
           {[
             'Near Metro',
             'Ready to Move',
             'Budget Homes',
             'Luxury Projects'
           ].map((category) => (
-            <button key={category} className="bg-white/10 backdrop-blur-sm text-white rounded-lg p-4 hover:bg-white/20 transition-all">
+            <button key={category} className="bg-white/10 backdrop-blur-sm text-white rounded-lg p-3 hover:bg-white/20 transition-all text-sm">
               <span className="font-medium">{category}</span>
             </button>
           ))}
