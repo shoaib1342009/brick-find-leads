@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { MapPin, ArrowLeft, Phone, MessageCircle, FileText, Clock, CheckCircle, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -16,6 +16,11 @@ const ProjectDetail = () => {
   const [showQuoteForm, setShowQuoteForm] = useState(false);
   
   const project = getProjectById(id);
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (!project) {
     return (
@@ -255,25 +260,25 @@ const ProjectDetail = () => {
         <div className="grid grid-cols-3 gap-2 p-3">
           <Button 
             onClick={handleWhatsApp}
-            className="flex flex-col items-center py-3 bg-green-500 hover:bg-green-600 text-white"
+            className="flex flex-col items-center py-4 bg-green-500 hover:bg-green-600 text-white"
           >
-            <MessageCircle className="w-5 h-5 mb-1" />
+            <MessageCircle className="w-5 h-5 mb-2" />
             <span className="text-xs">WhatsApp</span>
           </Button>
           
           <Button 
             onClick={handleCall}
-            className="flex flex-col items-center py-3 bg-blue-500 hover:bg-blue-600 text-white"
+            className="flex flex-col items-center py-4 bg-blue-500 hover:bg-blue-600 text-white"
           >
-            <Phone className="w-5 h-5 mb-1" />
+            <Phone className="w-5 h-5 mb-2" />
             <span className="text-xs">Call Now</span>
           </Button>
           
           <Button 
             onClick={() => setShowQuoteForm(true)}
-            className="flex flex-col items-center py-3 cta-button text-black"
+            className="flex flex-col items-center py-4 cta-button text-black"
           >
-            <FileText className="w-5 h-5 mb-1" />
+            <FileText className="w-5 h-5 mb-2" />
             <span className="text-xs">Get Quote</span>
           </Button>
         </div>
@@ -282,15 +287,15 @@ const ProjectDetail = () => {
       {/* Desktop Floating CTA */}
       <div className="hidden md:block fixed bottom-6 right-6 z-50">
         <div className="flex gap-3">
-          <Button onClick={handleCall} className="bg-blue-500 hover:bg-blue-600">
+          <Button onClick={handleCall} className="bg-blue-500 hover:bg-blue-600 px-4 py-3">
             <Phone className="w-4 h-4 mr-2" />
             Call Now
           </Button>
-          <Button onClick={handleWhatsApp} className="bg-green-500 hover:bg-green-600">
+          <Button onClick={handleWhatsApp} className="bg-green-500 hover:bg-green-600 px-4 py-3">
             <MessageCircle className="w-4 h-4 mr-2" />
             WhatsApp
           </Button>
-          <Button onClick={() => setShowQuoteForm(true)} className="cta-button text-black">
+          <Button onClick={() => setShowQuoteForm(true)} className="cta-button text-black px-4 py-3">
             <FileText className="w-4 h-4 mr-2" />
             Get Quote
           </Button>

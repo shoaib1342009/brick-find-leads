@@ -77,6 +77,17 @@
   .cta-button {
     @apply bg-gradient-to-r from-[#fad324] via-[#fdd835] to-[#fad324] hover:from-[#f9c91b] hover:via-[#fbc02d] hover:to-[#f9c91b] text-black font-semibold px-6 py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg;
   }
+
+  /* Add padding between search section and next content */
+  .search-section-spacing {
+    padding-top: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .search-section-spacing {
+      padding-top: 4rem;
+    }
+  }
 }
 
 @layer utilities {

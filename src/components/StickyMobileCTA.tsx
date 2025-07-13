@@ -26,25 +26,25 @@ const StickyMobileCTA = () => {
       <div className="grid grid-cols-3 gap-2 p-3">
         <Button 
           onClick={handleWhatsApp}
-          className="flex flex-col items-center py-3 bg-green-500 hover:bg-green-600 text-white"
+          className="flex flex-col items-center py-4 bg-green-500 hover:bg-green-600 text-white"
         >
-          <MessageCircle className="w-5 h-5 mb-1" />
+          <MessageCircle className="w-5 h-5 mb-2" />
           <span className="text-xs">WhatsApp</span>
         </Button>
         
         <Button 
           onClick={handleCall}
-          className="flex flex-col items-center py-3 bg-blue-500 hover:bg-blue-600 text-white"
+          className="flex flex-col items-center py-4 bg-blue-500 hover:bg-blue-600 text-white"
         >
-          <Phone className="w-5 h-5 mb-1" />
+          <Phone className="w-5 h-5 mb-2" />
           <span className="text-xs">Call Now</span>
         </Button>
         
         <Button 
           onClick={handleGetDetails}
-          className="flex flex-col items-center py-3 cta-button text-black"
+          className="flex flex-col items-center py-4 cta-button text-black"
         >
-          <FileText className="w-5 h-5 mb-1" />
+          <FileText className="w-5 h-5 mb-2" />
           <span className="text-xs">Get Details</span>
         </Button>
       </div>
